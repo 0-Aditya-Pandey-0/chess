@@ -7,25 +7,66 @@ from bot import choose_moves, read_positions, write_legal_moves, write_positions
 
 FRONTEND_DIRECTORY = Path(__file__).resolve().parent / "frontend"
 app = Flask(__name__, static_folder=FRONTEND_DIRECTORY, static_url_path="/static")
+DEFAULT_MODE = "two_player"
 board = chess.Board()
 last_move = None
 history = []
-game_mode = "two_player"
+game_mode = DEFAULT_MODE
+
+
+def write_default_state():
+    global last_move, history, game_mode
+    board.reset()
+    last_move = None
+    history = []
+    game_mode = DEFAULT_MODE
+    state = state_payload()
+    state["history"] = []
+    write_positions(state)
+    save_legal_moves()
 
 
 def load_saved_board():
     global last_move, history, game_mode
+    board.reset()
+    last_move = None
+    history = []
+    game_mode = DEFAULT_MODE
+
     try:
         saved_positions = read_positions()
-        saved_fen = saved_positions.get("fen")
-        if saved_fen:
-            board.set_fen(saved_fen)
-        last_move = saved_positions.get("last_move")
-        history = saved_positions.get("history", [])
-        if saved_positions.get("mode") in {"engine", "two_player"}:
-            game_mode = saved_positions["mode"]
     except (OSError, ValueError, TypeError):
-        pass
+        write_default_state()
+        return
+
+    if not isinstance(saved_positions, dict):
+        write_default_state()
+        return
+
+    saved_fen = saved_positions.get("fen")
+    if not isinstance(saved_fen, str):
+        write_default_state()
+        return
+
+    try:
+        candidate_board = chess.Board(saved_fen)
+    except ValueError:
+        write_default_state()
+        return
+
+    if candidate_board.is_game_over() and saved_fen != chess.Board().fen():
+        write_default_state()
+        return
+
+    board.set_fen(saved_fen)
+    last_move = saved_positions.get("last_move")
+    history = saved_positions.get("history", [])
+    if not isinstance(history, list):
+        history = []
+
+    requested_mode = saved_positions.get("mode")
+    if requested_mode in {"engine", "two_player"}:
+        game_mode = requested_mode
 
 
 def board_status():

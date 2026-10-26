@@ -3,7 +3,20 @@ const pieceSymbols = {
     black: { pawn: '♟', rook: '♜', knight: '♞', bishop: '♝', queen: '♛', king: '♚' }
 };
 
-const squares = document.querySelectorAll('.blocks');
+const fileOrder = { a: 0, b: 1, c: 2, d: 3, e: 4, f: 5, g: 6, h: 7 };
+const boardElement = document.querySelector('.board');
+
+function getSquareDisplayOrder(squareId) {
+    const [file, rank] = squareId.split('');
+    return (8 - Number(rank)) * 8 + fileOrder[file];
+}
+
+const squares = Array.from(document.querySelectorAll('.blocks')).sort((left, right) =>
+    getSquareDisplayOrder(left.id) - getSquareDisplayOrder(right.id)
+);
+
+squares.forEach((square) => boardElement.appendChild(square));
+
 const messageElement = document.querySelector('#message');
 const undoButton = document.querySelector('#undoButton');
 const resetButton = document.querySelector('#resetButton');
@@ -32,8 +45,11 @@ function pieceAt(squareName) {
 function renderBoard() {
     squares.forEach((square, index) => {
         const piece = pieceAt(square.id);
+        const row = Math.floor(index / 8);
+        const col = index % 8;
+        const isLightSquare = (row + col) % 2 === 0;
 
-        square.className = `square ${(Math.floor(index / 8) + index % 8) % 2 === 0 ? 'light' : 'dark'}`;
+        square.className = `square ${isLightSquare ? 'light' : 'dark'}`;
         square.setAttribute('aria-label', square.id);
         square.textContent = piece ? pieceSymbols[piece.color][piece.type] : '';
         square.draggable = Boolean(piece);

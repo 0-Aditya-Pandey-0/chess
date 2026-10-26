@@ -9,6 +9,7 @@ POSITIONS_PATH = Path(__file__).with_name("frontend") / "positions.json"
 LEGAL_MOVES_PATH = Path(__file__).with_name("frontend") / "legalmoves.json"
 
 
+# initially random.
 def choose_moves(board: chess.Board) -> chess.Move:
     return random.choice(list(board.legal_moves))
 
