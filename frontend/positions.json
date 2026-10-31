@@ -1,77 +1,98 @@
 {
-    "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "fen": "r1b2rk1/pp1p1ppp/2npp3/3n4/3P2q1/2PBPN2/PP3PPP/RN1Q1RK1 w - - 5 10",
     "turn": "white",
     "status": "ongoing",
     "mode": "engine",
     "white": [
         "rook1-a1",
         "knight1-b1",
-        "bishop1-c1",
         "queen-d1",
-        "king-e1",
-        "bishop2-f1",
-        "knight2-g1",
-        "rook2-h1",
+        "rook2-f1",
+        "king-g1",
         "pawn1-a2",
         "pawn2-b2",
-        "pawn3-c2",
-        "pawn4-d2",
-        "pawn5-e2",
-        "pawn6-f2",
-        "pawn7-g2",
-        "pawn8-h2"
+        "pawn3-f2",
+        "pawn4-g2",
+        "pawn5-h2",
+        "pawn6-c3",
+        "bishop1-d3",
+        "pawn7-e3",
+        "knight2-f3",
+        "pawn8-d4"
     ],
     "black": [
-        "pawn1-a7",
-        "pawn2-b7",
-        "pawn3-c7",
-        "pawn4-d7",
-        "pawn5-e7",
+        "queen-g4",
+        "knight1-d5",
+        "knight2-c6",
+        "pawn1-d6",
+        "pawn2-e6",
+        "pawn3-a7",
+        "pawn4-b7",
+        "pawn5-d7",
         "pawn6-f7",
         "pawn7-g7",
         "pawn8-h7",
         "rook1-a8",
-        "knight1-b8",
         "bishop1-c8",
-        "queen-d8",
-        "king-e8",
-        "bishop2-f8",
-        "knight2-g8",
-        "rook2-h8"
+        "rook2-f8",
+        "king-g8"
     ],
-    "last_move": null,
+    "last_move": {
+        "from": "e8",
+        "to": "g8",
+        "piece": "king",
+        "color": "black"
+    },
     "legal_moves": {
+        "f3": [
+            "d2",
+            "e1",
+            "e5",
+            "g5",
+            "h4"
+        ],
+        "d3": [
+            "a6",
+            "b5",
+            "c2",
+            "c4",
+            "e2",
+            "e4",
+            "f5",
+            "g6",
+            "h7"
+        ],
         "g1": [
-            "f3",
-            "h3"
+            "h1"
+        ],
+        "f1": [
+            "e1"
+        ],
+        "d1": [
+            "a4",
+            "b3",
+            "c1",
+            "c2",
+            "d2",
+            "e1",
+            "e2"
         ],
         "b1": [
             "a3",
-            "c3"
+            "d2"
+        ],
+        "e3": [
+            "e4"
+        ],
+        "c3": [
+            "c4"
         ],
         "h2": [
             "h3",
             "h4"
         ],
         "g2": [
-            "g3",
-            "g4"
-        ],
-        "f2": [
-            "f3",
-            "f4"
-        ],
-        "e2": [
-            "e3",
-            "e4"
-        ],
-        "d2": [
-            "d3",
-            "d4"
-        ],
-        "c2": [
-            "c3",
-            "c4"
+            "g3"
         ],
         "b2": [
             "b3",
@@ -82,5 +103,82 @@
             "a4"
         ]
     },
-    "history": []
+    "history": [
+        {
+            "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+            "last_move": null
+        },
+        {
+            "fen": "rnbqkb1r/pppppppp/5n2/8/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 1 2",
+            "last_move": {
+                "from": "g8",
+                "to": "f6",
+                "piece": "knight",
+                "color": "black"
+            }
+        },
+        {
+            "fen": "rnbqkb1r/pppppppp/8/3n4/3P1B2/8/PPP1PPPP/RN1QKBNR w KQkq - 3 3",
+            "last_move": {
+                "from": "f6",
+                "to": "d5",
+                "piece": "knight",
+                "color": "black"
+            }
+        },
+        {
+            "fen": "r1bqkb1r/pppppppp/2n5/3n4/3P4/6B1/PPP1PPPP/RN1QKBNR w KQkq - 5 4",
+            "last_move": {
+                "from": "b8",
+                "to": "c6",
+                "piece": "knight",
+                "color": "black"
+            }
+        },
+        {
+            "fen": "r1bqkb1r/pppp1ppp/2n1p3/3n4/3P4/4P1B1/PPP2PPP/RN1QKBNR w KQkq - 0 5",
+            "last_move": {
+                "from": "e7",
+                "to": "e6",
+                "piece": "pawn",
+                "color": "black"
+            }
+        },
+        {
+            "fen": "r1bqk2r/pppp1ppp/2nbp3/3n4/3P4/3BP1B1/PPP2PPP/RN1QK1NR w KQkq - 2 6",
+            "last_move": {
+                "from": "f8",
+                "to": "d6",
+                "piece": "bishop",
+                "color": "black"
+            }
+        },
+        {
+            "fen": "r1bqk2r/pp1p1ppp/2npp3/3n4/3P4/3BP3/PPP2PPP/RN1QK1NR w KQkq - 0 7",
+            "last_move": {
+                "from": "c7",
+                "to": "d6",
+                "piece": "pawn",
+                "color": "black"
+            }
+        },
+        {
+            "fen": "r1b1k2r/pp1p1ppp/2npp3/3n2q1/3P4/2PBP3/PP3PPP/RN1QK1NR w KQkq - 1 8",
+            "last_move": {
+                "from": "d8",
+                "to": "g5",
+                "piece": "queen",
+                "color": "black"
+            }
+        },
+        {
+            "fen": "r1b1k2r/pp1p1ppp/2npp3/3n4/3P2q1/2PBPN2/PP3PPP/RN1QK2R w KQkq - 3 9",
+            "last_move": {
+                "from": "g5",
+                "to": "g4",
+                "piece": "queen",
+                "color": "black"
+            }
+        }
+    ]
 }

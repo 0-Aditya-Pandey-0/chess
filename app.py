@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, send_from_directory
 import chess
 from pathlib import Path
 
-from bot import choose_moves, read_positions, write_legal_moves, write_positions
+from chessEngine import choose_moves, read_positions, write_legal_moves, write_positions
 
 
 FRONTEND_DIRECTORY = Path(__file__).resolve().parent / "frontend"
